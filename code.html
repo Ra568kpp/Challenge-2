@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product Page</title>
+
+    <style>
+
+  body {
+
+    font-family: Arial, sans-serif;
+
+    margin: 0;
+
+    padding: 0;
+
+  }
+
+    .close-button {
+
+    position: absolute;
+
+    top: 20px;
+
+    right: 20px;
+
+    cursor: pointer;
+
+    font-size: 24px;
+
+    color: #333;
+
+  }
+
+  .custom-paragraph {
+
+    font-size: 50px;
+
+  }
+
+  .popup {
+
+    display: none;
+
+    position: fixed;
+
+    bottom: 120px;
+
+    right: 80px;
+
+    background-color: yellow;
+
+    color: black;
+
+    padding: 20px 40px;
+
+    border-radius: 5px;
+    width: 300px;
+
+    font-size: 25px;
+
+  }
+
+  .container {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 20px;
+
+  }
+
+  .container img {
+
+    max-width: 100%;
+
+    height: auto;
+
+  }
+
+  .product-image {
+
+     max-width: 50%;
+
+     height: auto;
+
+  }
+
+  .product-details {
+
+    max-width: 45%;
+
+    padding: 20px;
+
+    background-color: #f9f9f9;
+
+    border: 1px solid #ddd;
+
+  }
+
+  .sizes {
+
+    margin-bottom: 15px;
+
+  }
+
+  .size-button {
+
+    margin-right: 10px;
+
+    background-color: #ddd;
+
+    border: none;
+
+    padding: 5px 10px;
+
+    cursor: pointer;
+
+    color: #FF5733;
+
+  }
+
+  .size-button.active {
+
+    background-color: #333;
+
+    color: white;
+
+  }
+
+  .offers {
+
+    margin-top: 20px;
+
+    font-size: 14px;
+
+    color: green;
+
+  }
+
+  .loyalty-offer {
+
+    background-color: #f9f9f9;
+
+    border: 1px solid #ddd;
+
+    padding: 10px;
+
+    margin-bottom: 10px;
+
+  }
+
+  .size-buttons {
+    margin-top: 10px;
+}
+
+.small-text {
+    font-size: 10px;
+    color: black;
+}
+
+
+.add-to-cart {
+    background-color: #3498DB;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #2980b9;
+}
+
+
+label {
+    display: inline-block;
+    background-color: #ccc;
+    color: #333;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Your product content goes here -->
+
+<button class="close-button" onclick="closePage()">×</button>
+
+<script>
+
+    function closePage() {
+
+      const userConfirmed = confirm("Buy 2, Get 1 Free on all products\nEarn 10% cashback on your next purchase.");
+
+      if (userConfirmed) {
+
+            console.log("User confirmed.");
+
+      } else {
+
+      console.log("User canceled.");
+
+    }
+
+
+
+    }
+
+  </script>
+
+<div class="container">
+
+    <div class="product-image">
+
+        <img src="https://www.gap.com/webcontent/0053/406/137/cn53406137.jpg" alt="Product">
+
+    </div>
+
+    <div class="product-details">
+
+        <h2>Gap Arch Logo Hi-Low Hoodie</h2>
+
+        <p>Price: $59.95</p>
+
+        <div class="sizes">
+
+            <button class="size-button active">S</button>
+
+            <button class="size-button">M</button>
+
+            <button class="size-button">L</button>
+
+            <button class="size-button">XL</button>
+
+        </div>
+        <p class="small-text">Description</p>
+
+        <p class="small-text">Soft cotton-blend hoodie.</p>
+
+        <p class="small-text">Hooded neckline.</p>
+
+        <p class="small-text">Long sleeves with banded cuffs.</p>
+
+        <p class="small-text">Gap arch logo at front.</p>
+
+        <p class="small-text">Banded hi-low hem is longer at back.#795513.</p>
+
+        <button  class="add-to-cart">Add to Cart</button>
+
+        <div class="offers">
+
+            <h3>Offers</h3>
+
+            <div class="loyalty-offer">Buy 2, Get 1 Free on all products!</div>
+
+            <div class="loyalty-offer">Earn 10% cashback on your next purchase.</div>
+
+            <div class="loyalty-offer">Pay up to 20% using GAP Points (up to 1000) on orders for 2990 or above.</div>
+
+            <div class="loyalty-offer">Get 15%  instant discount on Credit&Debit Cards.</div>
+
+            <div class="loyalty-offer">Get upto 30% Off on 2989 and Above. Max Discount Rs. 1300</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- Pop-up to display sales -->
+
+<div class="popup" id="salesPopup">
+
+    <span id="salesCount">22</span> sold in the last 24 hours
+
+</div>
+
+
+
+<script>
+
+    let soldCount = 22;
+
+    function updateSalesCountAndShowPopup() {
+
+      soldCount += Math.floor(5* 5) + 7;
+
+
+      const salesCountElement = document.getElementById("salesCount");
+
+      salesCountElement.textContent = soldCount;
+
+
+      const popup = document.getElementById("salesPopup");
+
+      popup.style.display = "block";
+
+
+      setTimeout(() => {
+
+        popup.style.display = "none";
+
+      }, 3000);
+
+    }
+
+    updateSalesCountAndShowPopup();
+
+  </script>
+
+</body>
+
+</html>
